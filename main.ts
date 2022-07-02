@@ -11,10 +11,10 @@ function flash (tempo: number) {
 }
 let c = ""
 let idx = 0
-let LETTER: string = []
-let wpm = 500
+let LETTER: string[] = []
+let wpm = 250
 let tdot = 1 * wpm
-let tdash = 3 * tdot
+let tdash = 4 * tdot
 let morseCode = [
 ".-",
 "-...",
@@ -44,8 +44,8 @@ let morseCode = [
 "--.."
 ]
 let CC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-LETTER = CC.split("")
 basic.forever(function () {
+    LETTER = CC.split("")
     for (let value of "SOS".split("")) {
         idx = LETTER.indexOf(value)
         c = morseCode[idx]
@@ -58,5 +58,8 @@ basic.forever(function () {
                 basic.pause(tdot)
             }
         }
+        basic.pause(tdot)
     }
+    basic.pause(tdash)
+    basic.pause(tdash)
 })
